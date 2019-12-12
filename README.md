@@ -1,5 +1,7 @@
 # Portal
 
+[![GitHubCI](https://github.com/unozerocode/portal/workflows/Elixir%20CI/badge.svg)](https://github.com/unozerocode/portal/actions?query=workflow%3A%22Elixir+CI%22)
+
 From [Portal Tutorial](https://howistart.org/posts/elixir/1/index.html)
 
 ## Installation
