@@ -1,6 +1,7 @@
 defmodule PortalTest do
   use ExUnit.Case
   require Portal.Door
+  require Portal.Application
 
   doctest Portal
 
@@ -16,8 +17,8 @@ defmodule PortalTest do
   end
 
   test "Pop empty is error" do
-    Portal.Door.start_link(:green)
-    assert (Portal.Door.pop(:green) == :error)
+    Portal.Door.start_link(:purple)
+    assert (Portal.Door.pop(:purple) == :error)
   end
 
   test "Transfer" do

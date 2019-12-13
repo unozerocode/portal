@@ -8,7 +8,7 @@ defmodule Portal.Application do
   def start(_type, _args) do
     children = [
       # Starts a worker by calling: Portal.Worker.start_link(arg)
-      # {Portal.Worker, arg}
+      {DynamicSupervisor, strategy: :one_for_one, name: Portal.DoorSupervisor}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
