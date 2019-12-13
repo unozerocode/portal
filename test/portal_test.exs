@@ -34,4 +34,16 @@ defmodule PortalTest do
     assert(Portal.Door.get(:green) == [3])
 
   end
+
+  test "1000 portals" do
+    Enum.map(1..1000, fn x -> Portal.shoot(:"L#{x}") end)
+    Enum.map(1..1000, fn x -> Portal.shoot(:"R#{x}") end)
+    portals = Enum.map(1..1000, fn x -> Portal.transfer(:"L#{x}", :"R#{x}", 1..100) end)
+    Enum.map(portals, fn %Portal{left: left, right: _right} -> assert (Portal.Door.get(left) == Enum.reverse(1..100)) end)
+    Enum.map(1..100, fn _x ->
+      Enum.map(portals, fn p -> Portal.push_right(p) end)
+    end)
+
+    Enum.map(portals, fn %Portal{left: _left, right: right} -> assert (Portal.Door.get(right) == Enum.to_list(1..100)) end)
+  end
 end
